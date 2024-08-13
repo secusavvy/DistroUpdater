@@ -4,7 +4,7 @@ LOGFILE="/var/log/update_script.log"
 
 echo "Starting update script at $(date)" | tee -a $LOGFILE
 
-# Check for Arch Linux (pacman)
+# For Arch Linux
 if [ -d /etc/pacman.d ]; then
     echo "Detected Arch Linux. Running pacman update..." | tee -a $LOGFILE
     if sudo pacman -Syu >> $LOGFILE 2>&1; then
@@ -14,7 +14,7 @@ if [ -d /etc/pacman.d ]; then
     fi
 fi
 
-# Check for Debian-based (apt)
+# For Debian
 if [ -d /etc/apt ]; then
     echo "Detected Debian-based system. Running apt update and upgrade..." | tee -a $LOGFILE
     if sudo apt update >> $LOGFILE 2>&1; then
